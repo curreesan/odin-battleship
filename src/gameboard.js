@@ -1,5 +1,3 @@
-import { Ship } from "../src/ship.js";
-
 class Gameboard {
   constructor() {
     this.board = Array(10)
