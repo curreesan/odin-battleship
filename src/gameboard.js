@@ -5,8 +5,14 @@ class Gameboard {
     this.board = Array(10)
       .fill(null)
       .map(() => Array(10).fill(null));
+
+    this.trackAttacks = Array(10)
+      .fill(null)
+      .map(() => Array(10).fill(null));
+
+    this.ships = [];
   }
-  //place ships at specific coordinates by calling the ship factory or class.
+
   placeShip(ship, startRow, startCol, direction) {
     const length = ship.length;
 
@@ -39,6 +45,7 @@ class Gameboard {
 
     // place if valid
     if (isValid) {
+      this.ships.push(ship);
       for (let i = 0; i < length; i++) {
         let row, col;
 
@@ -54,16 +61,39 @@ class Gameboard {
       }
     }
   }
-  //receiveAttack function that takes a pair of coordinates, determines whether or not the attack hit a ship and then sends the ‘hit’ function to the correct ship, or records the coordinates of the missed shot.
-  receiveAttack() {}
-  //keep track of missed attacks so they can display them properly.
-  //should be able to report whether or not all of their ships have been sunk.
+
+  //takes a pair of coordinate
+  receiveAttack(row, col) {
+    //out of bounds check
+    if (row < 0 || row >= 10 || col < 0 || col >= 10) {
+      return "out of bounds";
+    }
+
+    //already attacked?
+    if (this.trackAttacks[row][col] !== null) {
+      return "already attacked";
+    }
+
+    //if ship present, hit, else track miss
+    if (this.board[row][col] !== null) {
+      const ship = this.board[row][col];
+      ship.hit();
+      this.trackAttacks[row][col] = "hit";
+      if (ship.isSunk()) {
+        return "sunk";
+      }
+      return "hit";
+    } else {
+      this.trackAttacks[row][col] = "miss";
+      return "miss";
+    }
+  }
+
+  areAllShipsSunk() {
+    if (this.ships.length === 0) return false;
+
+    return this.ships.every((ship) => ship.isSunk());
+  }
 }
 
 export { Gameboard };
-
-const board = new Gameboard();
-// console.log(board);
-const ship = new Ship(4);
-console.log(ship);
-board.placeShip(ship, 0, 0, "horizontal");
