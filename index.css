@@ -96,3 +96,133 @@ h1 {
 #new-game-btn:hover {
   background: #00ffff;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 1200px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.ship-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.ship-row input,
+.ship-row select {
+  padding: 5px;
+  font-size: 14px;
+}
+.ship-row.valid {
+  border-color: green;
+  background: #f0fff0;
+}
+.ship-row.invalid {
+  border-color: red;
+  background: #fff0f0;
+}
+.ship-name {
+  font-weight: bold;
+  min-width: 120px;
+  color: black;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+#ships-container .ship-entry {
+  display: grid;
+  grid-template-columns: 150px 80px 100px 140px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #f8f8f8;
+  border-radius: 6px;
+}
+
+.ship-entry label {
+  font-weight: bold;
+}
+
+.ship-entry input,
+.ship-entry select {
+  padding: 8px;
+  font-size: 15px;
+}
+
+.button-group {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.button-group button {
+  padding: 12px 24px;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+#place-ships-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+#random-placement-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  padding: 10px;
+  background: #ffe6e6;
+  border-radius: 6px;
+}
+
+.cell.ship {
+  background-color: #777 !important;
+  border: 1px solid #555;
+}

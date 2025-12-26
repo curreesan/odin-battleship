@@ -45,7 +45,6 @@ class GameUI {
 
   setComputerGridClickable(enabled) {
     const cells = this.computerGrid.querySelectorAll(".cell");
-    console.log(cells);
     if (cells.length === 0) return;
 
     cells.forEach((cell) => {
@@ -100,8 +99,48 @@ class GameUI {
     }
   }
 
-  startNewGame() {
-    this.showMessage("New game started! Ships placing...");
+  openPlacementModal() {
+    document.getElementById("placement-modal").style.display = "flex";
+    this.populatePlacementForm();
+    document.getElementById("placement-error").style.display = "none";
+  }
+
+  closePlacementModal() {
+    document.getElementById("placement-modal").style.display = "none";
+  }
+
+  populatePlacementForm() {
+    const container = document.getElementById("ships-container");
+    container.innerHTML = "";
+
+    const ships = [
+      { name: "Carrier", length: 5 },
+      { name: "Battleship", length: 4 },
+      { name: "Cruiser", length: 3 },
+      { name: "Submarine", length: 3 },
+      { name: "Destroyer", length: 2 },
+    ];
+
+    ships.forEach((ship) => {
+      const div = document.createElement("div");
+      div.className = "ship-entry";
+      div.innerHTML = `
+        <label class="ship-name">${ship.name} (${ship.length})</label>
+        <input type="text" placeholder="Row 1-10" class="row">
+        <input type="text" placeholder="Col 1-10" class="col">
+        <select class="direction">
+          <option value="horizontal">Horizontal</option>
+          <option value="vertical">Vertical</option>
+        </select>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  showPlacementError(message) {
+    const errorEl = document.getElementById("placement-error");
+    errorEl.textContent = message;
+    errorEl.style.display = "block";
   }
 }
 

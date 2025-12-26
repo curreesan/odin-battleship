@@ -26,5 +26,29 @@
 
     <div id="message-area" class="message"></div>
     <button id="new-game-btn">New Game</button>
+
+    <div id="placement-modal" class="modal" style="display: none">
+      <div class="modal-content">
+        <h2>Place Your Fleet</h2>
+        <p>Enter coordinates (1-10) for each ship.</p>
+
+        <form id="fleet-form">
+          <div id="ships-container"></div>
+
+          <div class="button-group">
+            <button type="submit" id="place-ships-btn">Place All Ships</button>
+            <button type="button" id="random-placement-btn">
+              Random Placement
+            </button>
+          </div>
+        </form>
+
+        <div
+          id="placement-error"
+          class="error-message"
+          style="display: none"
+        ></div>
+      </div>
+    </div>
   </body>
 </html>
