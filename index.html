@@ -3,10 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
     <title>Battleship</title>
+    <link rel="stylesheet" href="index.css" />
+    <script defer type="module" src="./src/index.js"></script>
   </head>
   <body>
-    initial commit
+    <header>
+      <h1>Battleship</h1>
+    </header>
+
+    <main class="game-container">
+      <section class="board-container">
+        <h2>Your Fleet</h2>
+        <div id="player-grid" class="grid"></div>
+      </section>
+
+      <section class="board-container">
+        <h2>Enemy Waters</h2>
+        <div id="computer-grid" class="grid"></div>
+      </section>
+    </main>
+
+    <div id="message-area" class="message"></div>
+    <button id="new-game-btn">New Game</button>
   </body>
 </html>

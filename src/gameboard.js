@@ -43,7 +43,6 @@ class Gameboard {
 
     // place if valid
     if (isValid) {
-      this.ships.push(ship);
       for (let i = 0; i < length; i++) {
         let row, col;
 
@@ -57,7 +56,10 @@ class Gameboard {
 
         this.board[row][col] = ship; // Place ship reference
       }
+      this.ships.push(ship);
+      return true;
     }
+    return false;
   }
 
   //takes a pair of coordinate
